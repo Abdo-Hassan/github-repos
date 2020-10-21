@@ -1,7 +1,7 @@
 import types from '../types/userTypes';
 
 const INIT_STATE = {
-  currentUser: null,
+  currentUser: true,
   userRepos: [],
 };
 
