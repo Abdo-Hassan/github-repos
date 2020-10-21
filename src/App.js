@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Login from './components/Login';
 import Repos from './components/Repos';
-import Home from './components/Home';
 import PrivateUserRoute from './components/PrivateUserRoute';
 import NotFound from './components/NotFound';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,8 +13,8 @@ function App() {
       <div className='App'>
         <h1>Github Public Repos</h1>
         <Switch>
-          <Route exact path='/' component={Home} />
-          <PrivateUserRoute exact path='/repos' component={Repos} />
+          <PrivateUserRoute exact path='/' component={Repos} />
+          <Route exact path='/login' component={Login} />
           <Route component={NotFound} />
         </Switch>
       </div>

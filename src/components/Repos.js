@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { login, logout } from '../redux/action/userAction';
 
-const Repos = () => {
+const Home = () => {
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+  };
   return (
     <div>
-      <h2>Your Public Repos</h2>
-      <button className='btn btn-primary btn-danger'>Log Out</button>
+      <h2>Repos</h2>
+      <button className='btn btn-danger' onClick={handleLogout}>
+        Log Out
+      </button>
     </div>
   );
 };
 
-export default Repos;
+export default Home;

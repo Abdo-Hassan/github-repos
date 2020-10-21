@@ -1,7 +1,8 @@
 import types from '../types/userTypes';
 
-export const login = () => ({
+export const login = (userData) => ({
   type: types.LOGIN,
+  payload: userData,
 });
 
 export const logout = () => ({
