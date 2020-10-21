@@ -7,7 +7,6 @@ const INIT_STATE = {
   client_secret: process.env.REACT_APP_CLIENT_SECRET,
   proxy_url: process.env.REACT_APP_PROXY_URL,
   userData: JSON.parse(localStorage.getItem('userData')) || '',
-  // userRepos: [],
   userComments: JSON.parse(localStorage.getItem('userComments')) || [],
 };
 
@@ -48,9 +47,10 @@ export const userReducer = (state = INIT_STATE, action) => {
       };
 
     case types.ADD_COMMENT:
+      localStorage.setItem('userComments', JSON.stringify(action.payload));
       return {
         ...state,
-        userComments: action.payload,
+        userComments: [action.payload],
       };
 
     default:

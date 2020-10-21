@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './components/Login';
-import Repos from './components/Repos';
+import Repos from './components/repos/Repos';
 import PrivateUserRoute from './components/PrivateUserRoute';
 import NotFound from './components/NotFound';
 import 'bootstrap/dist/css/bootstrap.min.css';

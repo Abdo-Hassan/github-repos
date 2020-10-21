@@ -1,18 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRepos, logout } from '../redux/action/userAction';
+import { getRepos, logout } from '../../redux/action/userAction';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import Repo from './Repo';
 
 const Repos = () => {
   const userData = useSelector((state) => state.userData);
   const userRepos = useSelector((state) => state.userRepos);
+  const [page, setPage] = useState(1);
+  const [loadingRepos, setLoadingRepos] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchRepos = async () => {
       const repos = await fetch(userData.repos_url);
       const data = await repos.json();
+      setLoadingRepos(true);
+      console.log('repos', data);
       try {
         dispatch(getRepos(data));
+        setLoadingRepos(false);
       } catch (error) {
         console.log(error.message);
       }
@@ -59,29 +66,38 @@ const Repos = () => {
             <h3 className='repos-title'>
               Public Repos : {userData.public_repos}
             </h3>
-            <div className='container text-center'>
-              <div className='row'>
-                <div className='col-md-6 col-12'>
-                  <button type='button' className='btn btn-secondary'>
-                    Github Finder
-                  </button>
+            <div className='text-center'>
+              {loadingRepos === false ? (
+                <InfiniteScroll
+                  dataLength={userRepos.length}
+                  next={() => setPage(page + 1)}
+                  hasMore={true}
+                  loader={<h4>Loading...</h4>}
+                >
+                  {userRepos.map((repo, index) => {
+                    return (
+                      <Repo
+                        index={index}
+                        name={repo.name}
+                        link={repo.html_url}
+                      />
+                    );
+                  })}
+                </InfiniteScroll>
+              ) : (
+                <div
+                  className='spinner-border text-dark'
+                  style={{
+                    display: 'block',
+                    margin: '20px auto',
+                    width: '3rem',
+                    height: '3rem',
+                  }}
+                  role='status'
+                >
+                  <span className='sr-only'>Loading...</span>
                 </div>
-                <div className='col-md-6 col-12'>
-                  <button type='button' className='btn btn-secondary'>
-                    Weather App
-                  </button>
-                </div>
-                <div className='col-md-6 col-12'>
-                  <button type='button' className='btn btn-secondary'>
-                    Weather App
-                  </button>
-                </div>
-                <div className='col-md-6 col-12'>
-                  <button type='button' className='btn btn-secondary'>
-                    Weather App
-                  </button>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

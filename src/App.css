@@ -12,8 +12,13 @@ body {
 
 .login .login-button {
   padding: 10px 20px;
-  margin: 90px 0 20px;
   font-size: 17px;
+  margin-top: 20px;
+}
+
+.login .login-container {
+  margin: 100px 50px 50px;
+  text-align: center;
 }
 
 .repos .user-image {
@@ -38,6 +43,26 @@ body {
   font-weight: bold;
 }
 
+.navbar-light .navbar-brand {
+  color: #ffffff !important;
+  margin: auto;
+  font-size: 30px;
+}
+
+.not-found {
+  margin: 100px 50px 50px;
+  text-align: center;
+}
+
+.infinite-scroll-component__outerdiv {
+  width: 100%;
+}
+
+.form-control {
+  padding: 1.375rem 0.75rem;
+  width: 116%;
+}
+
 @media only screen and (max-width: 600px) {
   .title {
     font-size: 30px;
@@ -56,15 +81,14 @@ body {
   .repos .public-repos {
     margin-top: 20px;
   }
-}
 
-.navbar-light .navbar-brand {
-  color: #ffffff !important;
-  margin: auto;
-  font-size: 30px;
+  .form-control {
+    width: 105%;
+  }
 }
-
-.not-found {
-  margin: 100px 50px 50px;
-  text-align: center;
+@media only screen and (max-width: 800px) {
+  .repos .user-image {
+    max-width: 75%;
+    position: relative;
+  }
 }

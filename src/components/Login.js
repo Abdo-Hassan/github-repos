@@ -33,13 +33,12 @@ const Login = () => {
         body: JSON.stringify(requestData),
         credentials: 'same-origin',
         headers: {
-          Authorization: `token 49e8dcb5f45ce9b2a257335c2492234221383500`,
+          Authorization: `token 4f91a93edb596a91381a69386bb08182e7fd3b55`,
         },
       })
         .then((response) => response.json())
         .then((data) => {
           dispatch(loginSuccess(data));
-          console.log('data', data);
         })
         .catch((error) => {
           setLoading(false);
@@ -70,19 +69,33 @@ const Login = () => {
 
   return (
     <div className='login text-center'>
-      <a
-        href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}
-      >
-        <button className='btn btn-primary btn-dark login-button'>
-          <i
-            className='fab fa-github'
-            style={{ fontSize: 22, marginRight: 10 }}
-          ></i>
-          <span style={{ position: 'relative', bottom: 2 }}>
-            Log In with Github
+      <div className='jumbotron login-container'>
+        <h1 className='display-4'>Hello, Stranger!</h1>
+        <p className='lead'>Welcome to Github Public Repos</p>
+        <hr className='my-4' />
+        <p className='lead' style={{ fontSize: 20 }}>
+          You must log in with your github account to see all your information
+          including{' '}
+          <span style={{ color: '#8b008b', fontWeight: 'bold' }}>
+            Public Repos.
           </span>
-        </button>
-      </a>
+        </p>
+        <p className='lead'>
+          <a
+            href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}
+          >
+            <button className='btn btn-primary btn-dark login-button'>
+              <i
+                className='fab fa-github'
+                style={{ fontSize: 22, marginRight: 10 }}
+              ></i>
+              <span style={{ position: 'relative', bottom: 2 }}>
+                Log In with Github
+              </span>
+            </button>
+          </a>
+        </p>
+      </div>
     </div>
   );
 };
