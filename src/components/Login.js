@@ -33,7 +33,7 @@ const Login = () => {
         body: JSON.stringify(requestData),
         credentials: 'same-origin',
         headers: {
-          Authorization: `token ae7995fcf7294efd48e0d5d680ec0d155a719501`,
+          Authorization: `token ${process.env.REACT_APP_GITHUB_ACCESS_TOKEN}`,
         },
       })
         .then((response) => response.json())
