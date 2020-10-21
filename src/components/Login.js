@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { login } from '../redux/action/userAction';
+import { loginSuccess, loginFailed } from '../redux/action/userAction';
 
-const Repos = () => {
+const Login = () => {
   const currentUser = useSelector((state) => state.currentUser);
   const client_id = useSelector((state) => state.client_id);
   const redirect_uri = useSelector((state) => state.redirect_uri);
@@ -28,33 +28,63 @@ const Repos = () => {
         code: newUrl[1],
       };
 
-      fetch(proxy_url, {
+      fetch('https://api.github.com/user', {
         method: 'POST',
         body: JSON.stringify(requestData),
+        credentials: 'same-origin',
+        headers: {
+          Authorization: `token ${process.env.REACT_APP_ACCESS_TOKEN}`,
+        },
       })
         .then((response) => response.json())
         .then((data) => {
-          dispatch(login(data));
+          dispatch(loginSuccess(data));
           console.log('data', data);
         })
         .catch((error) => {
           setLoading(false);
+          dispatch(loginFailed());
           setError(error);
         });
     }
   }, [client_id, redirect_uri, client_secret, proxy_url, dispatch]);
 
   if (currentUser) return <Redirect to='/' />;
+  if (loading)
+    return (
+      <div
+        className='spinner-border text-dark'
+        style={{
+          display: 'block',
+          margin: '20px auto',
+          width: '3rem',
+          height: '3rem',
+        }}
+        role='status'
+      >
+        <span className='sr-only'>Loading...</span>
+      </div>
+    );
+
+  console.log('error', error);
 
   return (
-    <div>
+    <div className='text-center'>
       <a
         href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}
       >
-        <button className='btn btn-primary btn-dark'>Log In with Github</button>
+        <button className='btn btn-primary btn-dark login-button'>
+          <i
+            className='fab fa-github'
+            style={{ fontSize: 22, marginRight: 10 }}
+          ></i>
+          <span style={{ position: 'relative', bottom: 2 }}>
+            Log In with Github
+          </span>
+        </button>
       </a>
     </div>
   );
 };
 
-export default Repos;
+export default Login;

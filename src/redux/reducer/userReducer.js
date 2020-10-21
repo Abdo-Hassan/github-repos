@@ -6,14 +6,14 @@ const INIT_STATE = {
   redirect_uri: process.env.REACT_APP_REDIRECT_URI,
   client_secret: process.env.REACT_APP_CLIENT_SECRET,
   proxy_url: process.env.REACT_APP_PROXY_URL,
-  userData: JSON.parse(localStorage.getItem('userData')) || false,
+  userData: JSON.parse(localStorage.getItem('userData')) || '',
   // userRepos: [],
   userComments: JSON.parse(localStorage.getItem('userComments')) || [],
 };
 
 export const userReducer = (state = INIT_STATE, action) => {
   switch (action.type) {
-    case types.LOGIN:
+    case types.LOGIN_SUCCESS:
       localStorage.setItem('currentUser', true);
       localStorage.setItem('userData', JSON.stringify(action.payload));
       return {
@@ -21,23 +21,38 @@ export const userReducer = (state = INIT_STATE, action) => {
         currentUser: true,
         userData: action.payload,
       };
+
+    case types.LOGIN_FAILED:
+      localStorage.setItem('currentUser', false);
+      localStorage.setItem('userData', '');
+      return {
+        ...state,
+        currentUser: false,
+        userData: [],
+        userRepos: [],
+      };
+
     case types.LOGOUT:
       localStorage.setItem('currentUser', false);
       return {
         ...state,
         currentUser: false,
+        userData: [],
         userRepos: [],
       };
+
     case types.GET_REPOS:
       return {
         ...state,
         userRepos: action.payload,
       };
+
     case types.ADD_COMMENT:
       return {
         ...state,
         userComments: action.payload,
       };
+
     default:
       return state;
   }

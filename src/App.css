@@ -2,5 +2,30 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Nunito', sans-serif;
+  background-color: #fafafa;
+}
+
+.App {
+  padding: 20px;
+}
+
+.title {
   text-align: center;
+}
+
+.login-button {
+  padding: 10px 20px;
+  margin: 20px;
+  font-size: 17px;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  margin: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .title {
+    font-size: 30px;
+  }
 }

@@ -2,8 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const FormData = require('form-data');
 const fetch = require('node-fetch');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'text/*' }));
 app.use(bodyParser.urlencoded({ extended: false }));

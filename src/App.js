@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <div className='App'>
-        <h1>Github Public Repos</h1>
+        <h1 className='title'>Github Public Repos</h1>
         <Switch>
           <PrivateUserRoute exact path='/' component={Repos} />
           <Route exact path='/login' component={Login} />
