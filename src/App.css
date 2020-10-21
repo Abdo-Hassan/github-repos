@@ -12,17 +12,30 @@ body {
 
 .login .login-button {
   padding: 10px 20px;
-  margin: 20px;
+  margin: 90px 0 20px;
   font-size: 17px;
 }
 
 .repos .user-image {
-  max-width: 65%;
+  position: fixed;
+  max-width: 20%;
   margin: auto;
 }
+
+.repos .public-repos {
+  margin-top: 85px;
+}
+
 .repos .user-image .logout-button {
   padding: 10px 20px;
   margin: 20px;
+}
+
+.repos .repos-title {
+  text-align: center;
+  margin: 11px 0 30px;
+  font-size: 29px;
+  font-weight: bold;
 }
 
 @media only screen and (max-width: 600px) {
@@ -30,18 +43,18 @@ body {
     font-size: 30px;
   }
 
-  .repos .user-image {
-    max-width: 88%;
-  }
-
   .navbar-light .navbar-brand {
     font-size: 25px !important;
   }
-}
 
-@media only screen and (max-width: 900px) {
   .repos .user-image {
     max-width: 88%;
+    margin-bottom: 30px;
+    position: relative;
+  }
+
+  .repos .public-repos {
+    margin-top: 20px;
   }
 }
 
@@ -49,4 +62,9 @@ body {
   color: #ffffff !important;
   margin: auto;
   font-size: 30px;
+}
+
+.not-found {
+  margin: 100px 50px 50px;
+  text-align: center;
 }

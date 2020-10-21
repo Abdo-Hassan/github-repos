@@ -11,8 +11,8 @@ function App() {
   return (
     <Router>
       <div className='App'>
-        <nav class='navbar navbar-light bg-dark'>
-          <span class='navbar-brand mb-0 h1'>Github Public Repos</span>
+        <nav className='navbar navbar-light fixed-top bg-dark'>
+          <span className='navbar-brand mb-0 h1'>Github Public Repos</span>
         </nav>
         <Switch>
           <PrivateUserRoute exact path='/' component={Repos} />

@@ -14,11 +14,11 @@ export const logout = () => ({
 });
 
 export const getRepos = (repos) => ({
-  type: types.LOGIN,
+  type: types.GET_REPOS,
   payload: repos,
 });
 
 export const addComment = (comment) => ({
-  type: types.LOGIN,
+  type: types.ADD_COMMENT,
   payload: comment,
 });
