@@ -12,6 +12,17 @@ export const userReducer = (state = INIT_STATE, action) => {
         ...state,
         currentUser: true,
       };
+    case types.LOGOUT:
+      return {
+        ...state,
+        currentUser: null,
+        userRepos: [],
+      };
+    case types.GET_REPOS:
+      return {
+        ...state,
+        userRepos: action.payload,
+      };
     default:
       return state;
   }
