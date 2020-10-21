@@ -7,7 +7,11 @@ const Home = () => {
   if (currentUser) return <Redirect to='/repos' />;
   return (
     <div>
-      <button className='btn btn-primary btn-dark'>Log In with Github</button>
+      <a
+        href={`https://github.com/login/oauth/authorize?scope=user&client_id=e5b0e0ec3f49f354598c&redirect_uri=http://localhost:3000/repos`}
+      >
+        <button className='btn btn-primary btn-dark'>Log In with Github</button>
+      </a>
     </div>
   );
 };

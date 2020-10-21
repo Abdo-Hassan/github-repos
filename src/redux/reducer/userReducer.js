@@ -1,8 +1,9 @@
 import types from '../types/userTypes';
 
 const INIT_STATE = {
-  currentUser: true,
+  currentUser: false,
   userRepos: [],
+  userComments: [],
 };
 
 export const userReducer = (state = INIT_STATE, action) => {
@@ -22,6 +23,11 @@ export const userReducer = (state = INIT_STATE, action) => {
       return {
         ...state,
         userRepos: action.payload,
+      };
+    case types.ADD_COMMENT:
+      return {
+        ...state,
+        userComments: action.payload,
       };
     default:
       return state;

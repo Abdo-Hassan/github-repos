@@ -12,3 +12,8 @@ export const getRepos = (repos) => ({
   type: types.LOGIN,
   payload: repos,
 });
+
+export const addComment = (comment) => ({
+  type: types.LOGIN,
+  payload: comment,
+});
