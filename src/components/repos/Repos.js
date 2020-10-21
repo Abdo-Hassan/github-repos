@@ -7,13 +7,13 @@ import Repo from './Repo';
 const Repos = () => {
   const userData = useSelector((state) => state.userData);
   const userRepos = useSelector((state) => state.userRepos);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(10);
   const [loadingRepos, setLoadingRepos] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchRepos = async () => {
-      const repos = await fetch(userData.repos_url);
+      const repos = await fetch(`${userData.repos_url}?per_page=${page}`);
       const data = await repos.json();
       setLoadingRepos(true);
       console.log('repos', data);
@@ -25,7 +25,7 @@ const Repos = () => {
       }
     };
     fetchRepos();
-  }, [userData, dispatch]);
+  }, [userData, dispatch, page]);
 
   const handleLogout = () => {
     dispatch(logout());
