@@ -47,10 +47,13 @@ export const userReducer = (state = INIT_STATE, action) => {
       };
 
     case types.ADD_COMMENT:
-      localStorage.setItem('userComments', JSON.stringify(action.payload));
+      localStorage.setItem(
+        'userComments',
+        JSON.stringify([...state.userComments, action.payload])
+      );
       return {
         ...state,
-        userComments: [action.payload],
+        userComments: [...state.userComments, action.payload],
       };
 
     default:

@@ -72,7 +72,20 @@ const Repos = () => {
                   dataLength={userRepos.length}
                   next={() => setPage(page + 1)}
                   hasMore={true}
-                  loader={<h4>Loading...</h4>}
+                  loader={
+                    <div
+                      className='spinner-border text-dark'
+                      style={{
+                        display: 'block',
+                        margin: '20px auto',
+                        width: '3rem',
+                        height: '3rem',
+                      }}
+                      role='status'
+                    >
+                      <span className='sr-only'>Loading...</span>
+                    </div>
+                  }
                 >
                   {userRepos.map((repo, index) => {
                     return (

@@ -2,9 +2,9 @@ import React from 'react';
 
 const NotFound = ({ history }) => {
   return (
-    <div class='jumbotron not-found'>
-      <h1 class='display-4'>Nothing to see HERE !</h1>
-      <p class='lead'>
+    <div className='jumbotron not-found'>
+      <h1 className='display-4'>Nothing to see HERE !</h1>
+      <p className='lead'>
         <button
           className='btn btn-primary'
           onClick={() => history.push('/')}

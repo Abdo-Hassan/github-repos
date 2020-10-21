@@ -1,19 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addComment } from '../../redux/action/userAction';
 
-const Comments = () => {
+const Comments = ({ index }) => {
   const userComments = useSelector((state) => state.userComments);
   const dispatch = useDispatch();
   const [enteredComment, setEnteredComment] = useState('');
+  const [userComment, setUserComment] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addComment(enteredComment));
+    dispatch(addComment(enteredComment, index));
+    setEnteredComment('');
   };
 
-  return userComments.length !== 0 ? (
-    <p>yes</p>
+  useEffect(() => {
+    if (userComments !== 0) {
+      userComments.map((comment) => {
+        if (index === comment.repoNumber) {
+          setUserComment(comment.repoComment);
+        }
+        return comment;
+      });
+    } else {
+      setUserComment('');
+    }
+  }, [userComments, userComment, index]);
+
+  return userComment ? (
+    <p style={{ marginTop: '1rem' }}>Comment : {userComment}</p>
   ) : (
     <form
       onSubmit={handleSubmit}
@@ -23,17 +38,18 @@ const Comments = () => {
         justifyContent: 'space-around',
       }}
     >
-      <div class='form-group'>
+      <div className='form-group'>
         <input
           type='text'
-          class='form-control'
+          className='form-control'
           placeholder='Type a Comment'
           onChange={(e) => setEnteredComment(e.target.value)}
+          required
         />
       </div>
       <button
         type='submit'
-        class='btn btn-primary'
+        className='btn btn-primary'
         style={{ padding: '7px 19px' }}
       >
         Add

@@ -25,7 +25,7 @@ const Repo = ({ index, link, name }) => {
           </a>
         </div>
         <div className='col-md-8 col-12'>
-          <Comments />
+          <Comments index={index} />
         </div>
       </div>
     </div>

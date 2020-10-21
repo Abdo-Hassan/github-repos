@@ -18,7 +18,7 @@ export const getRepos = (repos) => ({
   payload: repos,
 });
 
-export const addComment = (comment) => ({
+export const addComment = (comment, index) => ({
   type: types.ADD_COMMENT,
-  payload: comment,
+  payload: { repoNumber: index, repoComment: comment },
 });

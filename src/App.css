@@ -83,7 +83,15 @@ body {
   }
 
   .form-control {
-    width: 105%;
+    width: 95%;
+  }
+
+  .login .login-container {
+    margin: 100px 10px 50px;
+  }
+
+  .login .login-container h1 {
+    font-size: 30px;
   }
 }
 @media only screen and (max-width: 800px) {
@@ -91,4 +99,8 @@ body {
     max-width: 75%;
     position: relative;
   }
+}
+
+.infinite-scroll-component {
+  overflow: hidden !important;
 }

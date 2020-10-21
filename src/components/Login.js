@@ -33,7 +33,7 @@ const Login = () => {
         body: JSON.stringify(requestData),
         credentials: 'same-origin',
         headers: {
-          Authorization: `token 4f91a93edb596a91381a69386bb08182e7fd3b55`,
+          Authorization: `token ae7995fcf7294efd48e0d5d680ec0d155a719501`,
         },
       })
         .then((response) => response.json())
