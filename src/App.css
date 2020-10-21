@@ -5,21 +5,22 @@ body {
   background-color: #fafafa;
 }
 
-.App {
-  padding: 20px;
-}
-
 .title {
   text-align: center;
+  margin: 16px 0 30px;
 }
 
-.login-button {
+.login .login-button {
   padding: 10px 20px;
   margin: 20px;
   font-size: 17px;
 }
 
-.logout-button {
+.repos .user-image {
+  max-width: 65%;
+  margin: auto;
+}
+.repos .user-image .logout-button {
   padding: 10px 20px;
   margin: 20px;
 }
@@ -28,4 +29,24 @@ body {
   .title {
     font-size: 30px;
   }
+
+  .repos .user-image {
+    max-width: 88%;
+  }
+
+  .navbar-light .navbar-brand {
+    font-size: 25px !important;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .repos .user-image {
+    max-width: 88%;
+  }
+}
+
+.navbar-light .navbar-brand {
+  color: #ffffff !important;
+  margin: auto;
+  font-size: 30px;
 }

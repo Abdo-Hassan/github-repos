@@ -33,7 +33,7 @@ const Login = () => {
         body: JSON.stringify(requestData),
         credentials: 'same-origin',
         headers: {
-          Authorization: `token ${process.env.REACT_APP_ACCESS_TOKEN}`,
+          Authorization: `token c31d7d022687eea18148399b803cbe14d5a09ee6`,
         },
       })
         .then((response) => response.json())
@@ -69,7 +69,7 @@ const Login = () => {
   console.log('error', error);
 
   return (
-    <div className='text-center'>
+    <div className='login text-center'>
       <a
         href={`https://github.com/login/oauth/authorize?scope=user&client_id=${client_id}&redirect_uri=${redirect_uri}`}
       >
